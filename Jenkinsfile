@@ -11,8 +11,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main', 
-                url: 'https://github.com/nika-borisenko/laravel-app.git',
-                credentialsId: 'your-git-credentials'
+                url: 'https://github.com/nika-borisenko/laravel-app.git'
             }
         }
 
