@@ -75,6 +75,9 @@ pipeline {
                     docker compose up -d --build
                     '''
 
+                    echo "Waiting for database to be ready..."
+                    sleep 20
+                    
                     // Выполняем миграции и оптимизацию
                     sh '''
                     docker compose exec app composer install --no-dev --optimize-autoloader
