@@ -56,6 +56,7 @@ pipeline {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', "${env.DOCKER_CREDENTIALS_ID}") {
                         docker.image("${env.DOCKER_IMAGE}:${env.BUILD_NUMBER}").push()
+                        docker.image("${env.DOCKER_IMAGE}:${env.BUILD_NUMBER}").push('latest')
                     }
                 }
             }
