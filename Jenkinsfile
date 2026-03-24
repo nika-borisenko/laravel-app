@@ -76,8 +76,8 @@ pipeline {
                     '''
 
                     echo "Waiting for database to be ready..."
-                    sleep 20
-                    
+                    sleep 50
+
                     // Выполняем миграции и оптимизацию
                     sh '''
                     docker compose exec app composer install --no-dev --optimize-autoloader
