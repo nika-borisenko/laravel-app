@@ -78,10 +78,11 @@ pipeline {
                     echo "Waiting for database to be ready..."
                     sleep 50
 
+                    sh 'docker compose exec -T db mysql -u root -psecret -e "CREATE DATABASE IF NOT EXISTS laravel;" || true'
+
                     // Выполняем миграции и оптимизацию
                     sh '''
                     docker compose exec app composer install --no-dev --optimize-autoloader
-                    docker compose exec app php artisan optimize:clear
                     docker compose exec app php artisan optimize
                     docker compose exec app php artisan migrate --force
                     '''
