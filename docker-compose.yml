@@ -9,7 +9,9 @@ services:
       - laravel-network
     depends_on:
       - db
-  
+  ports:
+      - "8000:8000"  # ← ДОБАВИТЬ эту строку
+    command: php artisan serve --host=0.0.0.0 --port=8000  # ← ДОБАВИТЬ эту строку
   db:
     image: mysql:8.0
     container_name: laravel-db
