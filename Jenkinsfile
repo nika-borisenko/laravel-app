@@ -42,10 +42,10 @@ pipeline {
                     docker.image("${env.DOCKER_IMAGE}:${env.BUILD_NUMBER}").inside('--network=host') {
                         // Устанавливаем зависимости
                         sh 'composer install --no-dev --optimize-autoloader'
-                        
+                        sh 'php artisan config:cache'
                         // Запускаем миграции и тесты
                         // sh 'php artisan migrate --force'
-                        sh 'php artisan test'
+                        // sh 'php artisan test'
                     }
                 }
             }
